@@ -2,28 +2,29 @@
 let cantPersonas = parseInt(prompt('Cantidad de Personas: '))
 let noches = parseInt(prompt('Cantidad de Noches: '))
 
+let nombreHabitacion
 let precio = 0
 let opcion = 0
 
 while (opcion < 1 || opcion > 4) {
-    opcion = parseInt(prompt('Seleccione habitacion: '))
+    opcion = parseInt(prompt('1 - King Room - $5500 p/noche \n2 - Doble Queen Room - $4800 p/noche \n3 - King Room Premium - $9100 p/noche \n4 - Simple Suite - $12800 p/noche  \nSeleccione numéricamente la opción: '))
 
     switch (opcion) {
         case 1:
-            console.log('opcion 1')
-            precio = noches * 2000
+            nombreHabitacion = 'King Room - $5500 p/noche'
+            precio = noches * 5500
             break;
         case 2:
-            console.log('opcion 2')
-            precio = noches * 5000
+            nombreHabitacion = 'Doble Queen Room - $4800 p/noche'
+            precio = noches * 4800
             break;
         case 3:
-            console.log('opcion 3')
-            precio = noches * 6000
+            nombreHabitacion = 'King Room Premium - $9100 p/noche'
+            precio = noches * 9100
             break;
         case 4:
-            console.log('opcion 4')
-            precio = noches * 10000
+            nombreHabitacion = 'Simple Suite - $12800 p/noche'
+            precio = noches * 12800
             break;
         default:
             alert('Valor incorrecto')
@@ -34,7 +35,6 @@ while (opcion < 1 || opcion > 4) {
 }
 
 
-console.log('Cant de personas: ' + cantPersonas)
-console.log('Cant de noches: ' + noches)
-console.log('Precio total: ' + precio)
+alert('RESERVA REALIZADA\nRESUMEN: \n' + nombreHabitacion + '\nCant de personas: ' + cantPersonas + '\nCant de noches: ' + noches + '\nPrecio total: ' + precio)
+
 
