@@ -53,7 +53,7 @@ while (opcion != 1 && opcion != 3 && opcion != 6 && opcion != 12) {
     switch (opcion) {
         case 1:
             nroCuota = '1'
-            recargo = 1
+            recargo = 0
             break;
         case 3:
             nroCuota = '3'
