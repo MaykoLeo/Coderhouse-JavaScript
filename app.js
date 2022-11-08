@@ -4,7 +4,7 @@ let precio = 0
 let cantPersonas = parseInt(prompt('Cantidad de Personas: '))
 let noches = parseInt(prompt('Cantidad de Noches: '))
 
-
+/* 
 const calculoPrecioPorNoche = (opcion) => {
     while (opcion < 1 || opcion > 4) {
         opcion = parseInt(prompt('Habitaciones \n1 - King Room - $5500 p/noche \n2 - Doble Queen Room - $4800 p/noche \n3 - King Room Premium - $9100 p/noche \n4 - Simple Suite - $12800 p/noche  \nSeleccione numéricamente la opción: '))
@@ -34,6 +34,60 @@ const calculoPrecioPorNoche = (opcion) => {
 
     }
 }
+*/
+
+
+
+const habitaciones = [
+    {
+        nombreHabitacion: 'King Room - $5500 p/noche',
+        precio: 5500,
+    },
+    {
+        nombreHabitacion: 'Doble Queen Room - $4800 p/noche',
+        precio: 4800,
+    },
+    {
+        nombreHabitacion: 'King Room Premium - $9100 p/noche',
+        precio: 9100,
+    },
+    {
+        nombreHabitacion: 'Simple Suite - $12800 p/noche',
+        precio: 12800,
+    },
+]
+
+
+console.log(habitaciones)
+
+
+let total = 0
+function calculo(array) {
+    total = array.precio * noches;
+
+}
+
+/* calculo(habitaciones[ubicacion]) */
+
+console.log(total)
+
+
+const calculoPrecioPorNoche = (opcion) => {
+    while (opcion < 1 || opcion > 4) {
+        opcion = parseInt(prompt('Habitaciones \n1 - King Room - $5500 p/noche \n2 - Doble Queen Room - $4800 p/noche \n3 - King Room Premium - $9100 p/noche \n4 - Simple Suite - $12800 p/noche  \nSeleccione numéricamente la opción: '))
+
+        if (opcion >= 1 && opcion <= 4) {
+            calculo(habitaciones[opcion - 1]);
+
+        } else {
+            console.log('Valor incorrecto')
+        }
+    }
+}
+
+calculoPrecioPorNoche(0)
+
+alert(total)
 
 
 let nroCuota
@@ -80,8 +134,8 @@ const calculoPrecioCuotas = (precioTotal, recargoCuota, cantidadCuotas) => {
 
 calculoPrecioPorNoche(0)
 infoPrecioCuotas(0)
-calculoPrecioCuotas(precio, recargo, nroCuota)
+calculoPrecioCuotas(total, recargo, nroCuota)
 
-alert('RESERVA REALIZADA\nRESUMEN: \n' + nombreHabitacion + '\nCant de personas: ' + cantPersonas + '\nCant de noches: ' + noches + '\nPrecio total: $' + precio + '\nEn ' + nroCuota + ' cuotas de: $' + precioCuota)
+alert('RESERVA REALIZADA\nRESUMEN: \n' + nombreHabitacion + '\nCant de personas: ' + cantPersonas + '\nCant de noches: ' + noches + '\nPrecio total: $' + total + '\nEn ' + nroCuota + ' cuotas de: $' + precioCuota)
 
 
