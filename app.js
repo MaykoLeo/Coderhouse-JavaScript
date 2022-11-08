@@ -1,6 +1,7 @@
 let nombreHabitacion
 let precio = 0
 
+alert('Bienvenido a la sección de reserva del Hotel Leviton')
 let cantPersonas = parseInt(prompt('Cantidad de Personas: '))
 let noches = parseInt(prompt('Cantidad de Noches: '))
 
@@ -9,29 +10,59 @@ const habitaciones = [
     {
         nombreHabitacion: 'King Room - $5500 p/noche',
         precio: 5500,
-        balcon: 'Si',
+        balcon: 'si',
     },
     {
         nombreHabitacion: 'Doble Queen Room - $4800 p/noche',
         precio: 4800,
-        balcon: 'No',
+        balcon: 'no',
     },
     {
         nombreHabitacion: 'King Room Premium - $9100 p/noche',
         precio: 9100,
-        balcon: 'Si',
+        balcon: 'si',
     },
     {
         nombreHabitacion: 'Simple Suite - $12800 p/noche',
         precio: 12800,
-        balcon: 'Si',
+        balcon: 'si',
     },
 ]
 
 
+
+let busquedaBalcon = 0
+// "habitDisponibles" es solo un simple cambio de nombre de la variable para que sea mas entendible
+let habitDisponibles = 0
+
+const disponibilidad = (opcion) => {
+    while (opcion != 'si' || opcion != 'no') {
+        opcion = prompt('¿Desea habitación con balcón?\nEscriba "Si" o "No"').toLocaleLowerCase()
+
+        if (opcion == 'si') {
+            busquedaBalcon = habitaciones.filter((habit) => habit.balcon === 'si')
+            habitDisponibles = busquedaBalcon
+            return busquedaBalcon
+
+        } else if (opcion == 'no') {
+            busquedaBalcon = habitaciones.filter((habit) => habit.balcon === 'no')
+            habitDisponibles = busquedaBalcon
+            return busquedaBalcon
+        }
+    }
+}
+
+
+disponibilidad(0)
+// Se calcula la longitud del array de "habitDisponibles"
+const longitudHabitDisponibles = habitDisponibles.length
+
+
+
+// Generador de string de descripcion de habitaciones
 let acum = 0
 let descripcionHabitaciones = 0
-for (const habit of habitaciones) {
+for (const habit of habitDisponibles) {
     acum = acum + 1
     //El if es para evitar que "descripcionHabitaciones" devuelva un 0 al inicio
     if (acum == 1) {
@@ -53,20 +84,18 @@ function calculo(array) {
 
 
 const calculoPrecioPorNoche = (opcion) => {
-    while (opcion < 1 || opcion > 4) {
-        opcion = parseInt(prompt('Habitaciones\n' + descripcionHabitaciones))
+    while (opcion < 1 || opcion > longitudHabitDisponibles) {
+        opcion = parseInt(prompt('Habitaciones\n' + descripcionHabitaciones + '\nSeleccione numéricamente la opción: '))
 
-        if (opcion >= 1 && opcion <= 4) {
-            calculo(habitaciones[opcion - 1]);
+        if (opcion >= 1 && opcion <= longitudHabitDisponibles) {
+            calculo(habitDisponibles[opcion - 1]);
+            nombreHabitacion = habitDisponibles[opcion - 1].nombreHabitacion
 
         } else {
             alert('Valor incorrecto')
         }
     }
 }
-
-
-
 
 
 
