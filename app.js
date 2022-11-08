@@ -4,90 +4,70 @@ let precio = 0
 let cantPersonas = parseInt(prompt('Cantidad de Personas: '))
 let noches = parseInt(prompt('Cantidad de Noches: '))
 
-/* 
-const calculoPrecioPorNoche = (opcion) => {
-    while (opcion < 1 || opcion > 4) {
-        opcion = parseInt(prompt('Habitaciones \n1 - King Room - $5500 p/noche \n2 - Doble Queen Room - $4800 p/noche \n3 - King Room Premium - $9100 p/noche \n4 - Simple Suite - $12800 p/noche  \nSeleccione numéricamente la opción: '))
-
-        switch (opcion) {
-            case 1:
-                nombreHabitacion = 'King Room - $5500 p/noche'
-                precio = noches * 5500
-                break;
-            case 2:
-                nombreHabitacion = 'Doble Queen Room - $4800 p/noche'
-                precio = noches * 4800
-                break;
-            case 3:
-                nombreHabitacion = 'King Room Premium - $9100 p/noche'
-                precio = noches * 9100
-                break;
-            case 4:
-                nombreHabitacion = 'Simple Suite - $12800 p/noche'
-                precio = noches * 12800
-                break;
-            default:
-                alert('Valor incorrecto')
-                break;
-
-        }
-
-    }
-}
-*/
-
-
 
 const habitaciones = [
     {
         nombreHabitacion: 'King Room - $5500 p/noche',
         precio: 5500,
+        balcon: 'Si',
     },
     {
         nombreHabitacion: 'Doble Queen Room - $4800 p/noche',
         precio: 4800,
+        balcon: 'No',
     },
     {
         nombreHabitacion: 'King Room Premium - $9100 p/noche',
         precio: 9100,
+        balcon: 'Si',
     },
     {
         nombreHabitacion: 'Simple Suite - $12800 p/noche',
         precio: 12800,
+        balcon: 'Si',
     },
 ]
 
 
-console.log(habitaciones)
+let acum = 0
+let descripcionHabitaciones = 0
+for (const habit of habitaciones) {
+    acum = acum + 1
+    //El if es para evitar que "descripcionHabitaciones" devuelva un 0 al inicio
+    if (acum == 1) {
+        descripcionHabitaciones = acum + ' - ' + habit.nombreHabitacion
+    } else {
+        descripcionHabitaciones = descripcionHabitaciones + '\n' + acum + ' - ' + habit.nombreHabitacion
+    }
+
+}
 
 
+
+// Funcion para calcular el precio total en funcion de la cantidad de noches ingresadas
 let total = 0
 function calculo(array) {
     total = array.precio * noches;
 
 }
 
-/* calculo(habitaciones[ubicacion]) */
-
-console.log(total)
-
 
 const calculoPrecioPorNoche = (opcion) => {
     while (opcion < 1 || opcion > 4) {
-        opcion = parseInt(prompt('Habitaciones \n1 - King Room - $5500 p/noche \n2 - Doble Queen Room - $4800 p/noche \n3 - King Room Premium - $9100 p/noche \n4 - Simple Suite - $12800 p/noche  \nSeleccione numéricamente la opción: '))
+        opcion = parseInt(prompt('Habitaciones\n' + descripcionHabitaciones))
 
         if (opcion >= 1 && opcion <= 4) {
             calculo(habitaciones[opcion - 1]);
 
         } else {
-            console.log('Valor incorrecto')
+            alert('Valor incorrecto')
         }
     }
 }
 
-calculoPrecioPorNoche(0)
 
-alert(total)
+
+
 
 
 let nroCuota
@@ -136,6 +116,6 @@ calculoPrecioPorNoche(0)
 infoPrecioCuotas(0)
 calculoPrecioCuotas(total, recargo, nroCuota)
 
-alert('RESERVA REALIZADA\nRESUMEN: \n' + nombreHabitacion + '\nCant de personas: ' + cantPersonas + '\nCant de noches: ' + noches + '\nPrecio total: $' + total + '\nEn ' + nroCuota + ' cuotas de: $' + precioCuota)
+alert('RESERVA REALIZADA\nRESUMEN: \n' + nombreHabitacion + '\nCant de personas: ' + cantPersonas + '\nCant de noches: ' + noches + '\nPrecio total: $' + total + '\nEn ' + nroCuota + ' cuota/s de: $' + precioCuota)
 
 
