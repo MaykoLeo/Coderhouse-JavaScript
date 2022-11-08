@@ -53,24 +53,25 @@ const disponibilidad = (opcion) => {
 }
 
 
-disponibilidad(0)
-// Se calcula la longitud del array de "habitDisponibles"
-const longitudHabitDisponibles = habitDisponibles.length
+
 
 
 
 // Generador de string de descripcion de habitaciones
 let acum = 0
 let descripcionHabitaciones = 0
-for (const habit of habitDisponibles) {
-    acum = acum + 1
-    //El if es para evitar que "descripcionHabitaciones" devuelva un 0 al inicio
-    if (acum == 1) {
-        descripcionHabitaciones = acum + ' - ' + habit.nombreHabitacion
-    } else {
-        descripcionHabitaciones = descripcionHabitaciones + '\n' + acum + ' - ' + habit.nombreHabitacion
-    }
 
+function stringGenerator(habitDisponibles) {
+    for (const habit of habitDisponibles) {
+        acum = acum + 1
+        //El if es para evitar que "descripcionHabitaciones" devuelva un 0 al inicio
+        if (acum == 1) {
+            descripcionHabitaciones = acum + ' - ' + habit.nombreHabitacion
+        } else {
+            descripcionHabitaciones = descripcionHabitaciones + '\n' + acum + ' - ' + habit.nombreHabitacion
+        }
+
+    }
 }
 
 
@@ -141,6 +142,11 @@ const calculoPrecioCuotas = (precioTotal, recargoCuota, cantidadCuotas) => {
 }
 
 
+disponibilidad(0)
+// Se calcula la longitud del array de "habitDisponibles"
+const longitudHabitDisponibles = habitDisponibles.length
+
+stringGenerator(habitDisponibles)
 calculoPrecioPorNoche(0)
 infoPrecioCuotas(0)
 calculoPrecioCuotas(total, recargo, nroCuota)
