@@ -30,7 +30,6 @@ const habitaciones = [
 ]
 
 
-
 let busquedaBalcon = 0
 // "habitDisponibles" es solo un simple cambio de nombre de la variable para que sea mas entendible
 let habitDisponibles = 0
@@ -51,9 +50,6 @@ const disponibilidad = (opcion) => {
         }
     }
 }
-
-
-
 
 
 
@@ -97,7 +93,6 @@ const calculoPrecioPorNoche = (opcion) => {
         }
     }
 }
-
 
 
 let nroCuota
