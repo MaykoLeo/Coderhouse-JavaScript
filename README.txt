@@ -1,2 +1,3 @@
 En proceso:
-
+DOM
+Storage
